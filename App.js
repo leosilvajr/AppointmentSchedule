@@ -1,3 +1,4 @@
+import Account from "./src/screens/account/account";
 import Login from "./src/screens/login/login";
 
 export default function App() {
@@ -7,4 +8,3 @@ export default function App() {
   </>;
 }
 
-//01:48:50 
