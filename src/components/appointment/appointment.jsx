@@ -1,13 +1,14 @@
 import { Image, View, Text } from "react-native";
 import {styles} from "./appointment.style";
 import icon from "../../constants/icon";
+import Button from "../../components/button/button";
 
 function Appointment(props){
     return <View style={styles.appointment} >
-        <Text style={styles.name}>{props.service} - {props.doctor}</Text>
+        <Text style={styles.name}>
+            {props.service} - {props.doctor}
+        </Text>
         <Text style={styles.specialty}>{props.specialty}</Text>
-
-
 
         <View style={styles.container}>
 
@@ -16,19 +17,26 @@ function Appointment(props){
                 <View style={styles.booking}>
                     <Image style={styles.icon} 
                         source={icon.calendar}/>
-                    <Text style={styles.bookingDate}>15/10/2024</Text> //01:09:20
+                    <Text style={styles.bookingDate}>
+                        15/10/2024
+                    </Text>
                 </View>
 
                 <View style={styles.booking}>
                     <Image style={styles.icon} 
                         source={icon.clock}/>
-                    <Text style={styles.bookingHour}>08:30H</Text>
+                    <Text style={styles.bookingHour}>
+                        08:30H
+                    </Text>
                 </View>
                 
             </View>
 
-        </View>
+            <View style={styles.containerButton}>
+                <Button text="Cancelar Reserva" />
+            </View>
 
+        </View>
     </View>
 }
 

@@ -10,11 +10,10 @@ export default function App() {
   </>;
 }
 
-//01:09:20
+// Aula 2 - 01:14:49
 
-
-/*
-npm install
-npx expo start
-*/
+// /*
+// npm install
+// npx expo start
+// */
 

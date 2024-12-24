@@ -12,7 +12,7 @@ export const styles = {
 
     name:{
         fontSize: FONT_SIZE.md,
-        color: COLORS.gray1,
+        color: 'COLORS.gray1',
         marginBottom: 2,
     },
 
@@ -28,5 +28,28 @@ export const styles = {
         marginRight: 5
     },
 
+    bookingDate:{
+       fontSize: FONT_SIZE.sm,
+       color: COLORS.gray3,
+       marginTop: 3
+    },
+
+    bookingHour:{
+        fontSize: FONT_SIZE.sm,
+        color: COLORS.gray3,
+        marginTop: 3
+     },
+
+     booking:{
+        flexDirection: "row",
+     },
+
+     containerBooking:{
+
+     },
+
+     containerButton:{
+        
+     }
 
 }
