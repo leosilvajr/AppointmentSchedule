@@ -7,8 +7,11 @@ function Button(props){
         Alert.alert("Clicou no Botão");
     }
 
-    return <TouchableOpacity onPress={TesteClick} style={styles.btn}>
-        <Text style={styles.text} >{props.text}</Text>
+    return <TouchableOpacity onPress={TesteClick} 
+                            style={[styles.btn, props.theme == "danger" ? styles.danger : styles.primary]}>
+        <Text style={styles.text}>
+            {props.text}
+        </Text>
     </TouchableOpacity>
 }
 

@@ -1,55 +1,55 @@
 export const doctors = [
     {
         id_doctor: 1,
-        name: "Dr. Armando Matheus",
+        name: "Dr. Leonardo Silva",
         specialty: "Ginecologia e obstetrícia",
         icon: "M"
     },
     {
         id_doctor: 2,
-        name: "Dra. Ana Beatriz Rutini",
+        name: "Dra. Karina Zara",
         specialty: "Cardiologista",
         icon: "F"
     },
     {
         id_doctor: 3,
-        name: "Dr. Antônio Almeida Souza ",
+        name: "Dr. Marcos Antonio",
         specialty: "Pediatria",
         icon: "M"
     },
     {
         id_doctor: 4,
-        name: "Dra. Roberta Martins",
+        name: "Dra. Simone Rodrigues",
         specialty: "Clínica Geral",
         icon: "F"
     },
     {
         id_doctor: 5,
-        name: "Dra. Nise da Silveira",
+        name: "Dr. Fabio Faria",
         specialty: "Cirurgia Plástica",
         icon: "F"
     },
     {
         id_doctor: 6,
-        name: "Dr. Jonatan Silvestre",
+        name: "Dr. Victor Franca",
         specialty: "Pediatria",
         icon: "M"
     },
     {
         id_doctor: 7,
-        name: "Dr. José Eduardo Souza",
+        name: "Dr. Altair Palin",
         specialty: "Clínica Geral",
         icon: "M"
     },
     {
         id_doctor: 8,
-        name: "Dra. Adriana Melo",
+        name: "Dra. Yohanna Vavra",
         specialty: "Clínica Geral",
         icon: "F"
     },
     {
         id_doctor: 9,
-        name: "Dra. Valeria Petri",
+        name: "Dra. Jessica Palin",
         specialty: "Cirurgia Plástica",
         icon: "F"
     }
@@ -60,7 +60,7 @@ export const appointments = [
     {
         id_appointment: 1,
         service: "Consulta",
-        doctor: "Dra. Nise da Silveira",
+        doctor: "Dra. Karina Zara",
         specialty: "Cirurgia Plástica",
         booking_date: "2024-10-25",
         booking_hour: "08:30",
@@ -68,7 +68,7 @@ export const appointments = [
     {
         id_appointment: 2,
         service: "Consulta",
-        doctor: "Dr. Antônio Almeida Souza",
+        doctor: "Dr. Leonardo Silva",
         specialty: "Pediatria",
         booking_date: "2024-10-28",
         booking_hour: "15:40",
@@ -76,7 +76,7 @@ export const appointments = [
     {
         id_appointment: 3,
         service: "Consulta",
-        doctor: "Dra. Roberta Martins",
+        doctor: "Dr. Marcos Antonio",
         specialty: "Clínica Geral",
         booking_date: "2024-11-05",
         booking_hour: "14:15",
@@ -84,7 +84,7 @@ export const appointments = [
     {
         id_appointment: 4,
         service: "Consulta",
-        doctor: "Dra. Nise da Silveira",
+        doctor: "Dra. Yohanna Vavra",
         specialty: "Cirurgia Plástica",
         booking_date: "2024-11-18",
         booking_hour: "11:00",
@@ -92,7 +92,7 @@ export const appointments = [
     {
         id_appointment: 5,
         service: "Consulta",
-        doctor: "Dr. Antônio Almeida Souza",
+        doctor: "Dr. Leonardo Silva",
         specialty: "Pediatria",
         booking_date: "2024-12-02",
         booking_hour: "10:40",
@@ -100,7 +100,7 @@ export const appointments = [
     {
         id_appointment: 6,
         service: "Consulta",
-        doctor: "Dra. Roberta Martins",
+        doctor: "Dr. Fabio Faria",
         specialty: "Clínica Geral",
         booking_date: "2024-12-14",
         booking_hour: "17:30",

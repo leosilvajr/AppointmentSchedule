@@ -12,7 +12,7 @@ export const styles = {
 
     name:{
         fontSize: FONT_SIZE.md,
-        color: 'COLORS.gray1',
+        color: COLORS.gray1,
         marginBottom: 2,
     },
 
@@ -49,7 +49,8 @@ export const styles = {
      },
 
      containerButton:{
-        flex: 1
+        flex: 1,
+        marginTop: 5
      },
 
      container:{
