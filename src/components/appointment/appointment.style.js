@@ -45,11 +45,15 @@ export const styles = {
      },
 
      containerBooking:{
-
+        flex: 1
      },
 
      containerButton:{
-        
+        flex: 1
+     },
+
+     container:{
+        flexDirection: "row",
      }
 
 }
