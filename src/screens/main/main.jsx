@@ -21,8 +21,8 @@ function Main(){
                 tabBarIcon: ({focused}) => {
                     return <Image source={icon.home} style={
                         {
-                            width: 25, 
-                            height: 25,
+                            width: 30, 
+                            height: 30,
                             opacity: focused ? 1 : 0.3
                         }
                     }/>
@@ -38,8 +38,8 @@ function Main(){
                 tabBarIcon: ({focused}) => {
                     return <Image source={icon.calendar} style={
                         {
-                            width: 25, 
-                            height: 25,
+                            width: 30, 
+                            height: 30,
                             opacity: focused ? 1 : 0.3
                         }
                     }/>
@@ -55,8 +55,8 @@ function Main(){
                 tabBarIcon: ({focused}) => {
                     return <Image source={icon.profile} style={
                         {
-                            width: 25, 
-                            height: 25,
+                            width: 30, 
+                            height: 30,
                             opacity: focused ? 1 : 0.3
                         }
                     }/>
