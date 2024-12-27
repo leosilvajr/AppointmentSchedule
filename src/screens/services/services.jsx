@@ -2,6 +2,7 @@ import { FlatList, Image, Text, View } from "react-native"
 import { styles } from "./services.style"
 import { doctors_services } from "../../constants/data";
 import icon from "../../constants/icon";
+import Service from "../../components/service/service";
 
 function Services () {
 
@@ -18,7 +19,7 @@ function Services () {
                   keyExtractor={(serv) => serv.id_service}
                   showsVerticalScrollIndicator={false}
                   renderItem={({item}) => {
-                    return <Text>{item.description}</Text>      
+                    return <Service description={item.description} price={item.price} />     
                   }}/>      
      </View>
 }
