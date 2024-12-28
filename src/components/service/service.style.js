@@ -3,9 +3,7 @@ import { COLORS, FONT_SIZE } from "../../constants/theme"
 export const styles = {
 
     service: {
-        flex: 1,
         backgroundColor: COLORS.white,
-        flexDirection: "row",
         padding: 12,
         borderWidth: 1,
         borderColor: COLORS.gray4,

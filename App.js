@@ -10,6 +10,6 @@ import Schedule from "./src/screens/schedule/schedule";
 export default function App() {
 
   return <>
-    <Main/>
+    <Services/>
   </>;
 }
