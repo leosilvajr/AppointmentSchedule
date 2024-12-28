@@ -11,8 +11,8 @@ function Services () {
 
         <View style={styles.banner}>
             <Image source={icon.female}/>
-            <Text style={styles.name}>Karina Zara</Text>
-            <Text style={styles.specialty}>Cardiologista</Text>
+            <Text style={styles.name}>Dr. Jessica Davis</Text>
+            <Text style={styles.specialty}>Plastic Surgery</Text>
         </View>
 
         <FlatList data={doctors_services}

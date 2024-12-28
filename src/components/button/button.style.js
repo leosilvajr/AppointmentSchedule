@@ -9,7 +9,7 @@ export const styles = {
     },
 
     primary:{
-        backgroundColor: COLORS.blue
+        backgroundColor: COLORS.green
     },
 
     danger :{

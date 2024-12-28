@@ -1,131 +1,130 @@
 export const doctors = [
     {
         id_doctor: 1,
-        name: "Dr. Leonardo Silva",
-        specialty: "Ginecologia e obstetrícia",
+        name: "Dr. James Smith",
+        specialty: "Obstetrics and Gynecology",
         icon: "M"
     },
     {
         id_doctor: 2,
-        name: "Dra. Karina Zara",
-        specialty: "Cardiologista",
+        name: "Dr. Emily Johnson",
+        specialty: "Cardiology",
         icon: "F"
     },
     {
         id_doctor: 3,
-        name: "Dr. Marcos Antonio",
-        specialty: "Pediatria",
+        name: "Dr. Michael Brown",
+        specialty: "Pediatrics",
         icon: "M"
     },
     {
         id_doctor: 4,
-        name: "Dra. Simone Rodrigues",
-        specialty: "Clínica Geral",
+        name: "Dr. Sarah White",
+        specialty: "General Medicine",
         icon: "F"
     },
     {
         id_doctor: 5,
-        name: "Dr. Fabio Faria",
-        specialty: "Cirurgia Plástica",
-        icon: "F"
+        name: "Dr. Daniel Harris",
+        specialty: "Plastic Surgery",
+        icon: "M"
     },
     {
         id_doctor: 6,
-        name: "Dr. Victor Franca",
-        specialty: "Pediatria",
+        name: "Dr. William Clark",
+        specialty: "Pediatrics",
         icon: "M"
     },
     {
         id_doctor: 7,
-        name: "Dr. Altair Palin",
-        specialty: "Clínica Geral",
+        name: "Dr. David Taylor",
+        specialty: "General Medicine",
         icon: "M"
     },
     {
         id_doctor: 8,
-        name: "Dra. Yohanna Vavra",
-        specialty: "Clínica Geral",
+        name: "Dr. Olivia Walker",
+        specialty: "General Medicine",
         icon: "F"
     },
     {
         id_doctor: 9,
-        name: "Dra. Jessica Palin",
-        specialty: "Cirurgia Plástica",
+        name: "Dr. Jessica Davis",
+        specialty: "Plastic Surgery",
         icon: "F"
     }
-
 ];
 
 export const appointments = [
     {
         id_appointment: 1,
-        service: "Consulta",
-        doctor: "Dra. Karina Zara",
-        specialty: "Cirurgia Plástica",
+        service: "Consultation",
+        doctor: "Dr. Emily Johnson",
+        specialty: "Plastic Surgery",
         booking_date: "2024-10-25",
         booking_hour: "08:30",
     },
     {
         id_appointment: 2,
-        service: "Consulta",
-        doctor: "Dr. Leonardo Silva",
-        specialty: "Pediatria",
+        service: "Consultation",
+        doctor: "Dr. James Smith",
+        specialty: "Pediatrics",
         booking_date: "2024-10-28",
         booking_hour: "15:40",
     },
     {
         id_appointment: 3,
-        service: "Consulta",
-        doctor: "Dr. Marcos Antonio",
-        specialty: "Clínica Geral",
+        service: "Consultation",
+        doctor: "Dr. Michael Brown",
+        specialty: "General Medicine",
         booking_date: "2024-11-05",
         booking_hour: "14:15",
     },
     {
         id_appointment: 4,
-        service: "Consulta",
-        doctor: "Dra. Yohanna Vavra",
-        specialty: "Cirurgia Plástica",
+        service: "Consultation",
+        doctor: "Dr. Olivia Walker",
+        specialty: "Plastic Surgery",
         booking_date: "2024-11-18",
         booking_hour: "11:00",
     },
     {
         id_appointment: 5,
-        service: "Consulta",
-        doctor: "Dr. Leonardo Silva",
-        specialty: "Pediatria",
+        service: "Consultation",
+        doctor: "Dr. James Smith",
+        specialty: "Pediatrics",
         booking_date: "2024-12-02",
         booking_hour: "10:40",
     },
     {
         id_appointment: 6,
-        service: "Consulta",
-        doctor: "Dr. Fabio Faria",
-        specialty: "Clínica Geral",
+        service: "Consultation",
+        doctor: "Dr. Daniel Harris",
+        specialty: "General Medicine",
         booking_date: "2024-12-14",
         booking_hour: "17:30",
     }
-]
+];
 
 export const doctors_services = [
     {
         id_service: 1,
-        description: "Consulta Médica",
+        description: "Medical Consultation",
         price: 499.99
     },
     {
         id_service: 2,
-        description: "Drenagem Linfática",
+        description: "Lymphatic Drainage",
         price: 650
     },
     {
         id_service: 3,
-        description: "Lipoaspiração",
+        description: "Liposuction",
         price: 5000
     },
     {
         id_service: 4,
-        description: "Mamoplastia",
+        description: "Breast Augmentation",
         price: 1700
     }
 ];

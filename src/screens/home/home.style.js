@@ -12,6 +12,7 @@ export const styles = {
         fontSize: FONT_SIZE.md,
         color: COLORS.gray1,
         marginBottom: 15,
-        marginLeft: 10
+        marginLeft: 10,
+        textAlign: "center"
     }
 }

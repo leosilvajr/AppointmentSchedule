@@ -1,6 +1,7 @@
 const COLORS = {
     red:   "#DF5951",
     blue:  "#0D6EFD",
+    green:  "#009a59",
     white: "#ffffff",
     gray1: "#323434",
     gray2: "#717f7f",
@@ -19,3 +20,5 @@ const FONT_SIZE = {
 };
 
 export {COLORS, FONT_SIZE}
+//    blue:  "#0D6EFD",
+//    green:  "#009a59",

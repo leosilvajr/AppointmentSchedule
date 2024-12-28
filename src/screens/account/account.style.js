@@ -14,7 +14,7 @@ export const styles = {
     },
 
     logo: {
-    maxWidth: 200,
+    maxWidth: 280,
     objectFit: "contain"
     },
 

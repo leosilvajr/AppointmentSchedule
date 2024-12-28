@@ -6,6 +6,7 @@ import icon from "../../constants/icon"
 import Home from "../home/home";
 import Calendar from "../calendar/calendar";
 import Profile from "../profile/profile";
+import { COLORS } from "../../constants/theme";
 
 
 const Tab = createBottomTabNavigator(); 
@@ -15,7 +16,7 @@ function Main(){
             <Tab.Screen name="Home" component={Home} options={{
                 headerTitleAlign: "center",
                 headerTitle: () => {
-                    return <Image source={icon.logo} style={{width: 125, height: 29}}/>
+                    return <Image source={icon.logo} style={{width: 255, height: 50}}/>
                 },
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => {
@@ -23,7 +24,8 @@ function Main(){
                         {
                             width: 30, 
                             height: 30,
-                            opacity: focused ? 1 : 0.3
+                            opacity: focused ? 1 : 0.3,
+                            tintColor: COLORS.green
                         }
                     }/>
                 }
@@ -32,7 +34,7 @@ function Main(){
             <Tab.Screen name="Calendar" component={Calendar} options={{
                 headerTitleAlign: "center",
                 headerTitle: () => {
-                    return <Image source={icon.logo} style={{width: 125, height: 29}}/>
+                    return <Image source={icon.logo} style={{width: 255, height: 50}}/>
                 },
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => {
@@ -40,7 +42,8 @@ function Main(){
                         {
                             width: 30, 
                             height: 30,
-                            opacity: focused ? 1 : 0.3
+                            opacity: focused ? 1 : 0.3,
+                            tintColor: COLORS.green
                         }
                     }/>
                 }
@@ -49,7 +52,7 @@ function Main(){
             <Tab.Screen name="Profile" component={Profile} options={{
                 headerTitleAlign: "center",
                 headerTitle: () => {
-                    return <Image source={icon.logo} style={{width: 125, height: 29}}/>
+                    return <Image source={icon.logo} style={{width: 255, height: 50}}/>
                 },
                 tabBarShowLabel: false,
                 tabBarIcon: ({focused}) => {
@@ -57,7 +60,8 @@ function Main(){
                         {
                             width: 30, 
                             height: 30,
-                            opacity: focused ? 1 : 0.3
+                            opacity: focused ? 1 : 0.3,
+                            tintColor: COLORS.green
                         }
                     }/>
                 }

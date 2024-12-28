@@ -15,8 +15,9 @@ function Service (props){
         </View>
 
         <View style={styles.containerButton}>
-            <Button text="Agendar" />
+            <Button text="Schedule" />
         </View>
+
     </View>
 }
 

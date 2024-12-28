@@ -50,7 +50,8 @@ export const styles = {
 
      containerButton:{
         flex: 1,
-        marginTop: 5
+        marginTop: 5,
+        paddingHorizontal: 20,
      },
 
      container:{

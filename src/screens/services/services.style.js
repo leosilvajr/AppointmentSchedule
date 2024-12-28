@@ -8,7 +8,7 @@ export const styles = {
     },
 
     banner:{
-        backgroundColor: COLORS.blue,
+        backgroundColor: COLORS.green,
         justfyContent: "center",
         alignItems: "center",
         paddingTop: 10,

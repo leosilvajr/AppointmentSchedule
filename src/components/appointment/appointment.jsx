@@ -33,7 +33,7 @@ function Appointment(props){
             </View>
 
             <View style={styles.containerButton}>
-                <Button text="Cancelar Reserva" theme="danger"/>
+                <Button text="Cancel" theme="danger"/>
             </View>
 
         </View>
