@@ -30,7 +30,7 @@ function Schedule (){
                 minDate={new Date().toISOString()}
             />
             <View >
-                <Text style={styles.textHour}>Horário</Text>
+                <Text style={styles.textHour}>Time</Text>
             </View>
 
 
@@ -46,7 +46,7 @@ function Schedule (){
         </View>
 
         <View>
-            <Button text="Confirmar Reserva" />
+            <Button text="Confirm Reservation" />
         </View>
 
     </View>

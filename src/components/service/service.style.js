@@ -7,6 +7,7 @@ export const styles = {
         padding: 12,
         borderWidth: 1,
         borderColor: COLORS.gray4,
+        flexDirection: "row",
     },
 
     containerText:{
@@ -14,7 +15,9 @@ export const styles = {
     },
 
     containerButton:{
-        marginTop: 5
+        flex: 1,
+        marginTop: 5,
+        paddingHorizontal: 20,
     },
 
     description:{
