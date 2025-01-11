@@ -6,6 +6,11 @@ import Service from "../../components/service/service";
 
 function Services () {
 
+  //Função para rexecutar ao clicar no botao de Agendar (Schedule)
+  function ClickService(id_service){
+    console.log(id_service)
+  }
+
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.
     return <View style={styles.container} >  
 
@@ -19,9 +24,13 @@ function Services () {
                   keyExtractor={(serv) => serv.id_service}
                   showsVerticalScrollIndicator={false}
                   renderItem={({item}) => {
-                    return <Service description={item.description} price={item.price} />     
-                  }}/>      
+                    return <Service id_service={item.id_service}
+                                    description={item.description}
+                                    price={item.price}
+                                    onPress={ClickService}
+                    />     
+        }}/>      
      </View>
 }
 
-export default Services; //02:06:27
+export default Services; 
