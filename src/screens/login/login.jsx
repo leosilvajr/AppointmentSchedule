@@ -2,10 +2,14 @@ import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-nat
 import icon from "../../constants/icon";
 import { styles } from "./login.style";
 import Button from "../../components/button/button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import api from "../../constants/api";
+import { AuthContext } from "../../context/auth";
 
 function Login(props) {
+
+    //Todo mundo que for usar o contexto, vai enxergar a variavel global user e setUser
+    const {setUser} = useContext(AuthContext);
 
     //Variaveis de estado, para armazenar os valores dos inputs
     const [email, setEmail] = useState(''); 
@@ -16,8 +20,7 @@ function Login(props) {
             const response = await api.post('users/login', {email, password});
 
             if(response.data){
-                console.log(response.data)
-                Alert.alert('Parabens, voce esta logado.');
+                setUser(response.data);
             }
 
         } catch (error) {
