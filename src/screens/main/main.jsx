@@ -1,5 +1,4 @@
 import { Image } from "react-native";
-import { NavigationContainer } from "@react-navigation/native"
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import icon from "../../constants/icon"
 
@@ -11,8 +10,7 @@ import { COLORS } from "../../constants/theme";
 
 const Tab = createBottomTabNavigator(); 
 function Main(){
-    return <NavigationContainer>
-        <Tab.Navigator>
+    return  <Tab.Navigator>
             <Tab.Screen name="Home" component={Home} options={{
                 headerTitleAlign: "center",
                 headerTitle: () => {
@@ -68,7 +66,6 @@ function Main(){
             }}/>
 
         </Tab.Navigator>
-    </NavigationContainer>
 }
 
 export default Main

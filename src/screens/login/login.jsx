@@ -24,7 +24,7 @@ function Login() {
                     />
                 </View>
 
-                <Button text="Access" />
+                <Button text="Access"/>
             </View>
 
             <View style={styles.footer}> 
