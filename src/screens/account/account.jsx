@@ -5,7 +5,7 @@ import Button from "../../components/button/button";
 import { useState } from "react";
 import api from "../../constants/api";
 
-function Account(props) {
+function Account(props) { //Toda tela que usar navegação precisa de props
 
     //Variaveis de estado, para armazenar os valores dos inputs
     const [name, setName] = useState(''); 
@@ -64,7 +64,7 @@ function Account(props) {
 
             <View style={styles.footer}> 
                 <Text>I already have an account. </Text>
-                <TouchableOpacity onPress={() => props.navigation.navigate('login')}>
+                <TouchableOpacity onPress={() => props.navigation.goBack()}>
                     <Text style={styles.footerLink}>Log In</Text>
                 </TouchableOpacity>
             </View>
