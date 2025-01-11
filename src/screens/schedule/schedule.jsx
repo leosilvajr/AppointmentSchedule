@@ -9,13 +9,27 @@ import Button from "../../components/button/button"
 LocaleConfig.locales["pt-br"] = ptBR
 LocaleConfig.defaultLocale = "pt-br"
 
-function Schedule (){
+function Schedule (props){
     //https://github.com/wix/react-native-calendars
     //https://github.com/react-native-picker/picker
+
+    /*
+    Para confirmar uma reserva eu preciso doctor, service, data, hora
+    */
+
+    //Propriedades que vem da tela Services
+    const id_doctor = props.route.params.id_doctor
+    const id_service = props.route.params.id_service
 
     //Variavel para armazenar qual dia esta selecionado
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedHour, setSelectedHour] = useState("");
+
+    function ClickConfirmReservation (){
+        console.log(id_doctor, id_service, selectedDate, selectedHour)
+    }
+
+    
 
     return <View style ={styles.container} >
 
@@ -46,7 +60,7 @@ function Schedule (){
         </View>
 
         <View>
-            <Button text="Confirm Reservation" />
+            <Button text="Confirm Reservation" onPress={ClickConfirmReservation}/>
         </View>
 
     </View>

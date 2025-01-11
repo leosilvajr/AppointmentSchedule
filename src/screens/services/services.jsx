@@ -13,7 +13,7 @@ function Services (props) { //Adicionar props para receber os parametros do obje
 
   //Função para rexecutar ao clicar no botao de Agendar (Schedule)
   function ClickService(id_service){
-    props.navigation.navigate("schedule", {id_service}) //Redirecionar para a pagina Schedule
+    props.navigation.navigate("schedule", {id_doctor, id_service}) //Necessario redirecionar para a pagina Schedule
   }
 
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.
