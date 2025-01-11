@@ -2,9 +2,12 @@ import { FlatList, Text, View } from "react-native"
 import { styles } from "./home.style"
 import { doctors } from "../../constants/data";
 import Doctor from "../../components/doctor/doctor";
-import icon from "../../constants/icon";
 
 function Home () {
+
+  function ClickDoctor (id_doctor, name, specialty, icon){ 
+    console.log(id_doctor, name, specialty, icon)
+  }
 
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.
     return <View style={styles.container} >  
@@ -14,11 +17,15 @@ function Home () {
                   keyExtractor={(doc) => doc.id_doctor}
                   showsVerticalScrollIndicator={false}
                   renderItem={({item}) => {
-                    return <Doctor name={item.name} 
-                                   icon={item.icon === "M" ? icon.female : icon.male} 
-                                   specialty={item.specialty}/>
+                    return <Doctor id_doctor={item.id_doctor}
+                                   name={item.name} 
+                                   icon={item.icon} 
+                                   specialty={item.specialty}
+                                   onPress={ClickDoctor}
+                                   />
+                                   
                   }}/>
      </View>
 }
 
-export default Home;
+export default Home
