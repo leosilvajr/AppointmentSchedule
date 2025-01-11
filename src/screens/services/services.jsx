@@ -4,20 +4,25 @@ import { doctors_services } from "../../constants/data";
 import icon from "../../constants/icon";
 import Service from "../../components/service/service";
 
-function Services () {
+function Services (props) { //Adicionar props para receber os parametros do objeto
+
+  const id_doctor = props.route.params.id_doctor
+  const name = props.route.params.name
+  const specialty = props.route.params.specialty
+  const iconDoctor = props.route.params.icon
 
   //Função para rexecutar ao clicar no botao de Agendar (Schedule)
   function ClickService(id_service){
-    console.log(id_service)
+    props.navigation.navigate("schedule", {id_service}) //Redirecionar para a pagina Schedule
   }
 
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.
     return <View style={styles.container} >  
 
         <View style={styles.banner}>
-            <Image source={icon.female}/>
-            <Text style={styles.name}>Dr. Jessica Davis</Text>
-            <Text style={styles.specialty}>Plastic Surgery</Text>
+            <Image source={iconDoctor == "M" ? icon.male : icon.female}/>
+            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.specialty}>{specialty}</Text>
         </View>
 
         <FlatList data={doctors_services}

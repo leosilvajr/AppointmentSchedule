@@ -6,7 +6,7 @@ import Doctor from "../../components/doctor/doctor";
 function Home (props) { //Recebendo as propriedades
 
   function ClickDoctor (id_doctor, name, specialty, icon){ 
-      props.navigation.navigate("services", {id_doctor, name, specialty, icon})//
+      props.navigation.navigate("services", {id_doctor, name, specialty, icon})
   }
 
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.

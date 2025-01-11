@@ -27,7 +27,15 @@ function RoutesPrivate () {
             }
         }}/>
 
-        <Stack.Screen name="schedule" component={Schedule} options={{headerShown: false}}/>
+        <Stack.Screen name="schedule" component={Schedule} options={{
+            headerTitle: "Make a reservation", 
+            headerTitleAlign: "center", 
+            headerShadowVisible: false,
+            headerTintColor: COLORS.white,
+            headerStyle: {
+                backgroundColor: COLORS.green
+            }
+        }}/>
         
         <Stack.Screen name="calendar" component={Calendar} options={{headerShown: false}}/>
 
