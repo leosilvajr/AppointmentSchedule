@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { COLORS } from '../constants/theme';
 
 
 import Main from "../screens/main/main";
@@ -15,7 +16,15 @@ function RoutesPrivate () {
 
     return <Stack.Navigator>
         <Stack.Screen name="main" component={Main} options={{headerShown: false}}/>
-        <Stack.Screen name="services" component={Services} options={{headerShown: false}}/>
+        <Stack.Screen name="services" component={Services} options={{
+            headerTitle: "Services", 
+            headerTitleAlign: "center", 
+            headerShadowVisible: false,
+            headerTintColor: COLORS.white,
+            headerStyle: {
+                backgroundColor: COLORS.green
+            }
+        }}/>
         <Stack.Screen name="schedule" component={Schedule} options={{headerShown: false}}/>
         {/* <Stack.Screen name="home" component={Home} options={{headerShown: false}}/>
         <Stack.Screen name="calendar" component={Calendar} options={{headerShown: false}}/>
