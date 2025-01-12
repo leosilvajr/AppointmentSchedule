@@ -1,5 +1,5 @@
 import { FlatList, View, Text, Alert } from "react-native";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import { styles } from "./calendar.style";
 import Appointment from "../../components/appointment/appointment";
@@ -73,9 +73,11 @@ function Calendar() {
           renderItem={({ item }) => (
             <Appointment
               id_appointment={item.id_appointment}
-              service={item.service}
               doctor={item.doctor}
+              service={item.service}
               specialty={item.specialty}
+              bookingDate={item.booking_date}
+              bookingHour={item.booking_hour}
               onPress={() => DeleteAppointment(item.id_appointment)}
             />
           )}
