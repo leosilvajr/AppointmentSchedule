@@ -20,6 +20,7 @@ function Login(props) {
             const response = await api.post('users/login', {email, password});
 
             if(response.data){
+                api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`; //Injetando o token no header
                 setUser(response.data);
             }
 

@@ -1,8 +1,9 @@
-import { FlatList, Image, Text, View } from "react-native"
+import { Alert, FlatList, Image, Text, View } from "react-native"
 import { styles } from "./services.style"
-import { doctors_services } from "../../constants/data";
 import icon from "../../constants/icon";
 import Service from "../../components/service/service";
+import api from "../../constants/api";
+import { useEffect, useState } from "react";
 
 function Services (props) { //Adicionar props para receber os parametros do objeto
 
@@ -11,10 +12,37 @@ function Services (props) { //Adicionar props para receber os parametros do obje
   const specialty = props.route.params.specialty
   const iconDoctor = props.route.params.icon
 
+  const [doctors_services, setUser] = useState([]); // Lista de servicos
+
   //Função para rexecutar ao clicar no botao de Agendar (Schedule)
   function ClickService(id_service){
     props.navigation.navigate("schedule", {id_doctor, id_service}) //Necessario redirecionar para a pagina Schedule
   }
+
+  async function LoadServices(){
+    try {
+        const response = await api.get(`doctors/${id_doctor}/services`);
+
+        if(response.data){
+          setUser(response.data);
+        }
+
+    } catch (error) {
+        //Tratamento de erro
+        if(error.response?.data.error){
+            Alert.alert(error.response.data.error);
+        }
+        else{
+            console.log(error);
+            Alert.alert('Ops, ocorreu um erro. Tente novamenteeee.');
+        }
+    }
+  }
+
+    useEffect(() => {
+        LoadServices(); //Executar função quando a tela for carregada.
+    });
+
 
     //Criar um Container que vai ser uma View para renderizar todo o fundo da pagina.
     return <View style={styles.container} >  
