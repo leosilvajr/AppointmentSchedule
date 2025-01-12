@@ -35,6 +35,7 @@ function Main(){
                     return <Image source={icon.logo} style={{width: 255, height: 50}}/>
                 },
                 tabBarShowLabel: false,
+                unmountOnBlur: true,
                 tabBarIcon: ({focused}) => {
                     return <Image source={icon.calendar} style={
                         {
@@ -53,6 +54,7 @@ function Main(){
                     return <Image source={icon.logo} style={{width: 255, height: 50}}/>
                 },
                 tabBarShowLabel: false,
+                unmountOnBlur: true,
                 tabBarIcon: ({focused}) => {
                     return <Image source={icon.profile} style={
                         {

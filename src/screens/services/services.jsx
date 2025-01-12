@@ -12,7 +12,7 @@ function Services (props) { //Adicionar props para receber os parametros do obje
   const specialty = props.route.params.specialty
   const iconDoctor = props.route.params.icon
 
-  const [doctors_services, setUser] = useState([]); // Lista de servicos
+  const [doctors_services, setDoctorServices] = useState([]); // Lista de servicos
 
   //Função para rexecutar ao clicar no botao de Agendar (Schedule)
   function ClickService(id_service){
@@ -24,7 +24,7 @@ function Services (props) { //Adicionar props para receber os parametros do obje
         const response = await api.get(`doctors/${id_doctor}/services`);
 
         if(response.data){
-          setUser(response.data);
+          setDoctorServices(response.data);
         }
 
     } catch (error) {

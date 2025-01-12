@@ -33,7 +33,7 @@ function Appointment(props){
             </View>
 
             <View style={styles.containerButton}>
-                <Button text="Cancel" theme="danger"/>
+                <Button text="Cancel" theme="danger" onPress={() => props.onPress(props.id_appointment)}/>
             </View>
 
         </View>

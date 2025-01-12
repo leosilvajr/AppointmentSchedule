@@ -5,6 +5,8 @@ import { ptBR } from "../../constants/calendar"
 import { useState } from "react"
 import { Picker } from "@react-native-picker/picker"
 import Button from "../../components/button/button"
+import api from "../../constants/api"
+import { Alert } from "react-native"
 
 LocaleConfig.locales["pt-br"] = ptBR
 LocaleConfig.defaultLocale = "pt-br"
@@ -25,11 +27,33 @@ function Schedule (props){
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedHour, setSelectedHour] = useState("");
 
-    function ClickConfirmReservation (){
-        console.log(id_doctor, id_service, selectedDate, selectedHour)
-    }
+    //console.log(id_doctor, id_service, selectedDate, selectedHour)
 
+    async function ClickConfirmReservation(){
+        try {
+            const response = await api.post(`appointments`, {
+                id_doctor,
+                id_service,
+                booking_date: selectedDate,
+                booking_hour: selectedHour,
+            });
     
+            if(response.data?.id_appointment){
+                props.navigation.popToTop(); //Essa função fecha a janela atual, a janela anterior e volta para a raiz.
+            }
+    
+        } catch (error) {
+            //Tratamento de erro
+            if(error.response?.data.error){
+                Alert.alert(error.response.data.error);
+            }
+            else{
+                console.log(error);
+                console.log(response);
+                Alert.alert('Ops, ocorreu um erro. Tente novamenteeee.');
+            }
+        }
+      }
 
     return <View style ={styles.container} >
 
