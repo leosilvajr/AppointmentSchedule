@@ -7,31 +7,43 @@ import api from "../../constants/api";
 
 function Account(props) { //Toda tela que usar navegação precisa de props
 
-    //Variaveis de estado, para armazenar os valores dos inputs
+    // Variáveis de estado para os inputs e status
     const [name, setName] = useState(''); 
     const [email, setEmail] = useState(''); 
     const [password, setPassword] = useState('');
+    const [statusMessage, setStatusMessage] = useState(''); // Estado para armazenar o status da API
+    const [isLoading, setIsLoading] = useState(false); // Estado para controle de carregamento
 
-    async function ExecuteAccount(){
+    // Função para consultar o status da API
+    async function checkStatus() {
+        setIsLoading(true); // Ativa o carregamento
+        try {
+            const response = await api.get('/status'); // Faz a requisição para o endpoint de status
+            Alert.alert(response.data.message); // Atualiza a mensagem de status com a resposta
+        } catch (error) {
+            // Se houver erro, exibe uma mensagem
+            Alert.alert('Erro ao acessar o status da API');
+        } finally {
+            setIsLoading(false); // Desativa o carregamento
+        }
+    }
+
+    // Função para criar conta
+    async function ExecuteAccount() {
         try {
             const response = await api.post('users/register', {name, email, password});
-
             if(response.data){
                 console.log(response.data)
                 Alert.alert('Conta criada com sucesso.');
             }
-
         } catch (error) {
-            //Tratamento de erro
             if(error.response?.data.error){
                 Alert.alert(error.response.data.error);
-            }
-            else{
+            } else {
                 Alert.alert('Ops, ocorreu um erro. Tente novamente.');
             }
         }
     }
-
 
     return (
         <View style={styles.container}> 
@@ -60,6 +72,7 @@ function Account(props) { //Toda tela que usar navegação precisa de props
                 </View>
 
                 <Button text="Create Account" onPress={ExecuteAccount}/>
+
             </View>
 
             <View style={styles.footer}> 
@@ -67,6 +80,11 @@ function Account(props) { //Toda tela que usar navegação precisa de props
                 <TouchableOpacity onPress={() => props.navigation.goBack()}>
                     <Text style={styles.footerLink}>Log In</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.footer} >
+            <TouchableOpacity>
+                    <Text style={styles.footerLink}  onPress={checkStatus}>Check API Status</Text>
+                </TouchableOpacity>          
             </View>
 
         </View>
