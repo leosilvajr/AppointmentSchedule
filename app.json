@@ -20,7 +20,9 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.leosilvatanabi.agendeimobile"
+      "package": "com.leosilvatanabi.agendeimobile",
+      "permissions": ["INTERNET"], 
+      "usesCleartextTraffic": true 
     },
     "web": {
       "favicon": "./assets/favicon.png"
