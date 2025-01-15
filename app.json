@@ -21,8 +21,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.leosilvatanabi.agendeimobile",
-      "permissions": ["INTERNET"], 
-      "usesCleartextTraffic": true 
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"],
+      "usesCleartextTraffic": true
     },
     "web": {
       "favicon": "./assets/favicon.png"

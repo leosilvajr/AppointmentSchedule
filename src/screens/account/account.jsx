@@ -31,23 +31,27 @@ function Account(props) { //Toda tela que usar navegação precisa de props
     async function checkStatusRota() {
         setIsLoading(true); // Ativa o carregamento
         try {
-          const response = await fetch('http://15.228.236.137:3001/status'); // Faz a requisição diretamente ao endpoint da API
-          const data = await response.json(); // Converte a resposta para JSON
-    
-          if (response.ok) {
-            // Se a resposta for bem-sucedida, exibe a mensagem
-            Alert.alert(data.message); // Atualiza a mensagem de status com a resposta
+          const response = await fetch('http://15.228.236.137:3001/status', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+          if (!response.ok) {
+            // Exibe o código de status caso não seja bem-sucedido
+            Alert.alert(`Erro ao acessar API: ${response.status}`);
           } else {
-            // Caso contrário, exibe um erro genérico
-            Alert.alert('Erro: Não foi possível acessar o status da API');
+            const data = await response.json();
+            Alert.alert(data.message); // Exibe a resposta da API
           }
         } catch (error) {
-          // Se houver erro, exibe uma mensagem de erro
-          Alert.alert('Erro ao acessar o status da API');
+          // Exibe o erro completo, caso haja algum
+          Alert.alert(`Erro ao acessar a API: ${error.message}`);
         } finally {
           setIsLoading(false); // Desativa o carregamento
         }
       }
+      
 
     // Função para criar conta
     async function ExecuteAccount() {
