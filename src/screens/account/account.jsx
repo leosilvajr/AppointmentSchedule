@@ -28,6 +28,27 @@ function Account(props) { //Toda tela que usar navegação precisa de props
         }
     }
 
+    async function checkStatusRota() {
+        setIsLoading(true); // Ativa o carregamento
+        try {
+          const response = await fetch('http://15.228.236.137:3001/status'); // Faz a requisição diretamente ao endpoint da API
+          const data = await response.json(); // Converte a resposta para JSON
+    
+          if (response.ok) {
+            // Se a resposta for bem-sucedida, exibe a mensagem
+            Alert.alert(data.message); // Atualiza a mensagem de status com a resposta
+          } else {
+            // Caso contrário, exibe um erro genérico
+            Alert.alert('Erro: Não foi possível acessar o status da API');
+          }
+        } catch (error) {
+          // Se houver erro, exibe uma mensagem de erro
+          Alert.alert('Erro ao acessar o status da API');
+        } finally {
+          setIsLoading(false); // Desativa o carregamento
+        }
+      }
+
     // Função para criar conta
     async function ExecuteAccount() {
         try {
@@ -84,6 +105,11 @@ function Account(props) { //Toda tela que usar navegação precisa de props
             <View style={styles.footer} >
             <TouchableOpacity>
                     <Text style={styles.footerLink}  onPress={checkStatus}>Check API Status</Text>
+                </TouchableOpacity>          
+            </View>
+            <View style={styles.footer} >
+            <TouchableOpacity>
+                    <Text style={styles.footerLink}  onPress={checkStatusRota}>Check Rota</Text>
                 </TouchableOpacity>          
             </View>
 
