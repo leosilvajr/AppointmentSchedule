@@ -1,35 +1,32 @@
-import { View, Text } from "react-native"
-import { styles } from "./schedule.style"
-import { Calendar, LocaleConfig } from "react-native-calendars"
-import { ptBR } from "../../constants/calendar"
-import { useState } from "react"
-import { Picker } from "@react-native-picker/picker"
-import Button from "../../components/button/button"
-import api from "../../constants/api"
-import { Alert } from "react-native"
+import { View, Text, Alert } from "react-native";
+import { styles } from "./schedule.style";
+import { Calendar, LocaleConfig } from "react-native-calendars";
+import { ptBR } from "../../constants/calendar";
+import { useState } from "react";
+import { Picker } from "@react-native-picker/picker";
+import Button from "../../components/button/button";
+import api from "../../constants/api";
 
-LocaleConfig.locales["pt-br"] = ptBR
-LocaleConfig.defaultLocale = "pt-br"
+LocaleConfig.locales["pt-br"] = ptBR;
+LocaleConfig.defaultLocale = "pt-br";
 
-function Schedule (props){
+function Schedule(props) {
     //https://github.com/wix/react-native-calendars
     //https://github.com/react-native-picker/picker
 
     /*
-    Para confirmar uma reserva eu preciso doctor, service, data, hora
+    Para confirmar uma reserva, preciso: médico, serviço, data e hora.
     */
 
-    //Propriedades que vem da tela Services
-    const id_doctor = props.route.params.id_doctor
-    const id_service = props.route.params.id_service
+    // Propriedades que vêm da tela Serviços
+    const id_doctor = props.route.params.id_doctor;
+    const id_service = props.route.params.id_service;
 
-    //Variavel para armazenar qual dia esta selecionado
+    // Variáveis para armazenar o dia e horário selecionados
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedHour, setSelectedHour] = useState("");
 
-    //console.log(id_doctor, id_service, selectedDate, selectedHour)
-
-    async function ClickConfirmReservation(){
+    async function ClickConfirmReservation() {
         try {
             const response = await api.post(`appointments`, {
                 id_doctor,
@@ -37,57 +34,64 @@ function Schedule (props){
                 booking_date: selectedDate,
                 booking_hour: selectedHour,
             });
-    
-            if(response.data?.id_appointment){
-                props.navigation.popToTop(); //Essa função fecha a janela atual, a janela anterior e volta para a raiz.
+
+            if (response.data?.id_appointment) {
+                props.navigation.popToTop(); // Essa função fecha a janela atual, a janela anterior e volta para a raiz.
             }
-    
         } catch (error) {
-            //Tratamento de erro
-            if(error.response?.data.error){
+            // Tratamento de erro
+            if (error.response?.data.error) {
                 Alert.alert(error.response.data.error);
-            }
-            else{
+            } else {
                 console.log(error);
                 console.log(response);
-                Alert.alert('Ops, ocorreu um erro. Tente novamenteeee.');
+                Alert.alert("Ops, ocorreu um erro. Tente novamente.");
             }
         }
-      }
+    }
 
-    return <View style ={styles.container} >
+    return (
+        <View style={styles.container}>
+            <View>
+                <Calendar
+                    theme={styles.theme}
+                    onDayPress={(day) => {
+                        setSelectedDate(day.dateString);
+                    }}
+                    markedDates={{
+                        [selectedDate]: { selected: true, disableTouchEvent: true },
+                    }}
+                    minDate={new Date().toISOString()}
+                />
+                <View>
+                    <Text style={styles.textHour}>Horário</Text>
+                </View>
 
-        <View >
-            <Calendar theme={styles.theme}
-                onDayPress={(day) => {
-                    setSelectedDate(day.dateString)
-                }}
-                markedDates={{
-                    [selectedDate]: {selected: true, disableTouchEvent: true}
-                }}
-                minDate={new Date().toISOString()}
-            />
-            <View >
-                <Text style={styles.textHour}>Time</Text>
+                <View>
+                    <Picker
+                        selectedValue={selectedHour}
+                        onValueChange={(itemValue, itemIndex) => {
+                            setSelectedHour(itemValue);
+                        }}
+                    >
+                        <Picker.Item label="08:00" value="08:00" />
+                        <Picker.Item label="09:00" value="09:00" />
+                        <Picker.Item label="10:00" value="10:00" />
+                        <Picker.Item label="11:00" value="11:00" />
+                        <Picker.Item label="12:00" value="12:00" />
+                        <Picker.Item label="14:00" value="14:00" />
+                        <Picker.Item label="15:00" value="15:00" />
+                        <Picker.Item label="16:00" value="16:00" />
+                        <Picker.Item label="17:00" value="17:00" />
+                    </Picker>
+                </View>
             </View>
-
 
             <View>
-                <Picker selectedValue={selectedHour} onValueChange={(itemValue, itemIndex) => {
-                    setSelectedHour(itemValue)
-                }}>
-                    <Picker.Item label="08:00" value="08:00" />
-                    <Picker.Item label="09:00" value="09:00" />
-                    <Picker.Item label="10:00" value="10:00" />
-                </Picker>
+                <Button text="Confirmar Agendamento" onPress={ClickConfirmReservation} />
             </View>
         </View>
-
-        <View>
-            <Button text="Confirm Reservation" onPress={ClickConfirmReservation}/>
-        </View>
-
-    </View>
+    );
 }
 
-export default Schedule
+export default Schedule;

@@ -14,45 +14,6 @@ function Account(props) { //Toda tela que usar navegação precisa de props
     const [statusMessage, setStatusMessage] = useState(''); // Estado para armazenar o status da API
     const [isLoading, setIsLoading] = useState(false); // Estado para controle de carregamento
 
-    // Função para consultar o status da API
-    async function checkStatus() {
-        setIsLoading(true); // Ativa o carregamento
-        try {
-            const response = await api.get('/status'); // Faz a requisição para o endpoint de status
-            Alert.alert(response.data.message); // Atualiza a mensagem de status com a resposta
-        } catch (error) {
-            // Se houver erro, exibe uma mensagem
-            Alert.alert('Erro ao acessar o status da API');
-        } finally {
-            setIsLoading(false); // Desativa o carregamento
-        }
-    }
-
-    async function checkApiHttps() {
-        try {
-            // Faz a requisição GET diretamente para o endpoint
-            const response = await fetch('https://reqres.in/api/users/2');
-    
-            // Verifica se a requisição foi bem-sucedida
-            if (!response.ok) {
-                throw new Error(`Erro na API: ${response.status}`);
-            }
-    
-            // Converte a resposta para JSON
-            const data = await response.json();
-    
-            // Exibe os dados do usuário em um alerta
-            Alert.alert(
-                'Resposta da API',
-                `Nome: ${data.data.first_name} ${data.data.last_name}\nEmail: ${data.data.email}`
-            );''
-        } catch (error) {
-            // Trata possíveis erros da requisição
-            Alert.alert('Erro ao acessar a API', error.message);
-        }
-    }
-    
-
     // Função para criar conta
     async function ExecuteAccount() {
         try {
@@ -60,6 +21,8 @@ function Account(props) { //Toda tela que usar navegação precisa de props
             if(response.data){
                 console.log(response.data)
                 Alert.alert('Conta criada com sucesso.');
+                props.navigation.goBack();
+
             }
         } catch (error) {
             if(error.response?.data.error){
@@ -80,43 +43,32 @@ function Account(props) { //Toda tela que usar navegação precisa de props
             <View>
 
                 <View style={styles.containerInput}>
-                    <TextInput placeholder="Name" style={styles.input} onChangeText={(name) => setName(name)} />
+                    <TextInput placeholder="Nome" style={styles.input} onChangeText={(name) => setName(name)} />
                 </View>
 
                 <View style={styles.containerInput}>
-                    <TextInput placeholder="Email" style={styles.input} onChangeText={(email) => setEmail(email)}/>
+                    <TextInput placeholder="E-mail" style={styles.input} onChangeText={(email) => setEmail(email)}/>
                 </View>
 
                 <View style={styles.containerInput}>
                     <TextInput 
-                        placeholder="Password" 
+                        placeholder="Senha" 
                         style={styles.input}
                         secureTextEntry={true} 
                         onChangeText={(password) => setPassword(password)}
                     />
                 </View>
 
-                <Button text="Create Account" onPress={ExecuteAccount}/>
+                <Button text="Criar Conta" onPress={ExecuteAccount}/>
 
             </View>
 
             <View style={styles.footer}> 
-                <Text>I already have an account. </Text>
+                <Text>Já tenho uma conta. </Text>
                 <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                    <Text style={styles.footerLink}>Log In</Text>
+                    <Text style={styles.footerLink}>Entrar</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.footer} >
-            <TouchableOpacity>
-                    <Text style={styles.footerLink}  onPress={checkStatus}>Check API Status</Text>
-                </TouchableOpacity>          
-            </View>
-            <View style={styles.footer} >
-            <TouchableOpacity>
-                    <Text style={styles.footerLink}  onPress={checkApiHttps}>Check API HTTPS</Text>
-                </TouchableOpacity>          
-            </View>
-
         </View>
     );
 }
