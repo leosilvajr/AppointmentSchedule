@@ -2,7 +2,7 @@ import { View, Text, Alert } from "react-native";
 import { styles } from "./schedule.style";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { ptBR } from "../../constants/calendar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Picker } from "@react-native-picker/picker";
 import Button from "../../components/button/button";
 import api from "../../constants/api";
@@ -11,13 +11,6 @@ LocaleConfig.locales["pt-br"] = ptBR;
 LocaleConfig.defaultLocale = "pt-br";
 
 function Schedule(props) {
-    //https://github.com/wix/react-native-calendars
-    //https://github.com/react-native-picker/picker
-
-    /*
-    Para confirmar uma reserva, preciso: médico, serviço, data e hora.
-    */
-
     // Propriedades que vêm da tela Serviços
     const id_doctor = props.route.params.id_doctor;
     const id_service = props.route.params.id_service;
@@ -26,6 +19,7 @@ function Schedule(props) {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedHour, setSelectedHour] = useState("");
 
+    // Função para confirmar a reserva
     async function ClickConfirmReservation() {
         try {
             const response = await api.post(`appointments`, {
@@ -36,19 +30,25 @@ function Schedule(props) {
             });
 
             if (response.data?.id_appointment) {
-                props.navigation.popToTop(); // Essa função fecha a janela atual, a janela anterior e volta para a raiz.
+                props.navigation.popToTop(); // Voltar para a raiz
             }
         } catch (error) {
             // Tratamento de erro
             if (error.response?.data.error) {
                 Alert.alert(error.response.data.error);
             } else {
-                console.log(error);
-                console.log(response);
+                console.error(error);
                 Alert.alert("Ops, ocorreu um erro. Tente novamente.");
             }
         }
     }
+
+    // Efeito que garante que o botão fique desabilitado ao carregar
+    useEffect(() => {
+        // Inicialmente, o botão estará desabilitado
+        setSelectedDate(""); // Garantindo que a data seja vazia
+        setSelectedHour(""); // Garantindo que o horário seja vazio
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -74,6 +74,8 @@ function Schedule(props) {
                             setSelectedHour(itemValue);
                         }}
                     >
+                        {/* Mensagem padrão no Picker */}
+                        <Picker.Item label="Informe aqui o seu horário" value="" />
                         <Picker.Item label="08:00" value="08:00" />
                         <Picker.Item label="09:00" value="09:00" />
                         <Picker.Item label="10:00" value="10:00" />
@@ -88,7 +90,12 @@ function Schedule(props) {
             </View>
 
             <View>
-                <Button text="Confirmar Agendamento" onPress={ClickConfirmReservation} />
+                {/* Botão desabilitado até que a data e o horário sejam preenchidos */}
+                <Button
+                    text="Confirmar Agendamento"
+                    onPress={ClickConfirmReservation}
+                    disabled={!selectedDate || !selectedHour}
+                />
             </View>
         </View>
     );

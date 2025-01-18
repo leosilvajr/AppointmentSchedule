@@ -17,39 +17,30 @@ function Login(props) {
 
     async function ExecuteLogin() {
         try {
-            const response = await api.post('users/login', { email, password });
+            // Convertendo o email para lowercase
+            const normalizedEmail = email.toLowerCase();
+            
+            const response = await api.post('users/login', { email: normalizedEmail, password });
     
             if (response.data) {
-                api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`; // Injetando o token no header
+                // Injetando o token no header
+                api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
                 setUser(response.data);
             }
         } catch (error) {
-            // Tratamento de erro detalhado
             if (error.response) {
-                // O servidor respondeu com um status fora da faixa 2xx
+                // Tratamento simplificado de status code
                 const statusCode = error.response.status;
-                const errorMessage = error.response.data?.error || 'Erro desconhecido no servidor';
+                const messages = {
+                    400: 'Verifique os dados enviados. Pode haver algum erro nos campos preenchidos.',
+                    401: 'Credenciais inválidas. Verifique seu e-mail e senha.',
+                    403: 'Você não tem permissão para acessar esse recurso.',
+                    404: 'O endereço ou recurso solicitado não foi encontrado.',
+                    500: 'Ocorreu um erro inesperado no servidor. Tente novamente mais tarde.'
+                };
     
-                switch (statusCode) {
-                    case 400:
-                        Alert.alert('Erro de solicitação', 'Verifique os dados enviados. Pode haver algum erro nos campos preenchidos.');
-                        break;
-                    case 401:
-                        Alert.alert('Acesso negado', 'Credenciais inválidas. Verifique seu e-mail e senha.');
-                        break;
-                    case 403:
-                        Alert.alert('Sem permissão', 'Você não tem permissão para acessar esse recurso.');
-                        break;
-                    case 404:
-                        Alert.alert('Recurso não encontrado', 'O endereço ou recurso solicitado não foi encontrado.');
-                        break;
-                    case 500:
-                        Alert.alert('Erro interno no servidor', 'Ocorreu um erro inesperado no servidor. Tente novamente mais tarde.');
-                        break;
-                    default:
-                        Alert.alert('Erro inesperado', `Ocorreu um erro com o código ${statusCode}: ${errorMessage}`);
-                        break;
-                }
+                const alertMessage = messages[statusCode] || `Ocorreu um erro com o código ${statusCode}: ${error.response.data?.error || 'Erro desconhecido no servidor'}`;
+                Alert.alert('Erro', alertMessage);
             } else if (error.request) {
                 // A requisição foi feita, mas nenhuma resposta foi recebida
                 Alert.alert(
