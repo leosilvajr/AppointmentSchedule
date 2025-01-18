@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.leosilvatanabi.agendeimobile"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +22,10 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.leosilvatanabi.agendeimobile",
-      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"],
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ],
       "usesCleartextTraffic": true
     },
     "web": {
@@ -31,6 +35,23 @@
       "eas": {
         "projectId": "4b2dd996-cbf9-4b30-b818-0309660ca855"
       }
-    }
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true,
+            "manifest": {
+              "queries": [
+                {
+                  "android:scheme": "http"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    ]
   }
 }

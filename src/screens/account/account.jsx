@@ -45,7 +45,7 @@ function Account(props) { //Toda tela que usar navegação precisa de props
             Alert.alert(
                 'Resposta da API',
                 `Nome: ${data.data.first_name} ${data.data.last_name}\nEmail: ${data.data.email}`
-            );
+            );''
         } catch (error) {
             // Trata possíveis erros da requisição
             Alert.alert('Erro ao acessar a API', error.message);
