@@ -17,21 +17,27 @@ function Account(props) { //Toda tela que usar navegação precisa de props
     // Função para criar conta
     async function ExecuteAccount() {
         try {
-            const response = await api.post('users/register', {name, email, password});
-            if(response.data){
-                console.log(response.data)
+            const response = await api.post('users/register', { name, email, password });
+            if (response.data) {
+                console.log(response.data);
                 Alert.alert('Conta criada com sucesso.');
                 props.navigation.goBack();
-
             }
         } catch (error) {
-            if(error.response?.data.error){
-                Alert.alert(error.response.data.error);
+            // Verifica se o erro é um erro 401 (não autorizado)
+            if (error.response?.status === 401) {
+                Alert.alert('Não autorizado. Verifique suas credenciais.');
+            }
+            // Verifica se há uma mensagem de erro personalizada no servidor
+            else if (error.response?.data?.message) {
+                Alert.alert(error.response.data.message); // Exibe a mensagem de erro
             } else {
-                Alert.alert('Ops, ocorreu um erro. Tente novamente.');
+                Alert.alert('Ops, ocorreu um erro. Tente novamente.'); // Mensagem padrão
             }
         }
     }
+    
+    
 
     return (
         <View style={styles.container}> 
