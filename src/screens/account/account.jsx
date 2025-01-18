@@ -28,30 +28,30 @@ function Account(props) { //Toda tela que usar navegação precisa de props
         }
     }
 
-    async function checkStatusRota() {
-        setIsLoading(true); // Ativa o carregamento
+    async function checkApiHttps() {
         try {
-          const response = await fetch('http://15.228.236.137:3001/status', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-          if (!response.ok) {
-            // Exibe o código de status caso não seja bem-sucedido
-            Alert.alert(`Erro ao acessar API: ${response.status}`);
-          } else {
+            // Faz a requisição GET diretamente para o endpoint
+            const response = await fetch('https://reqres.in/api/users/2');
+    
+            // Verifica se a requisição foi bem-sucedida
+            if (!response.ok) {
+                throw new Error(`Erro na API: ${response.status}`);
+            }
+    
+            // Converte a resposta para JSON
             const data = await response.json();
-            Alert.alert(data.message); // Exibe a resposta da API
-          }
+    
+            // Exibe os dados do usuário em um alerta
+            Alert.alert(
+                'Resposta da API',
+                `Nome: ${data.data.first_name} ${data.data.last_name}\nEmail: ${data.data.email}`
+            );
         } catch (error) {
-          // Exibe o erro completo, caso haja algum
-          Alert.alert(`Erro ao acessar a API: ${error.message}`);
-        } finally {
-          setIsLoading(false); // Desativa o carregamento
+            // Trata possíveis erros da requisição
+            Alert.alert('Erro ao acessar a API', error.message);
         }
-      }
-      
+    }
+    
 
     // Função para criar conta
     async function ExecuteAccount() {
@@ -113,7 +113,7 @@ function Account(props) { //Toda tela que usar navegação precisa de props
             </View>
             <View style={styles.footer} >
             <TouchableOpacity>
-                    <Text style={styles.footerLink}  onPress={checkStatusRota}>Check Rota</Text>
+                    <Text style={styles.footerLink}  onPress={checkApiHttps}>Check API HTTPS</Text>
                 </TouchableOpacity>          
             </View>
 
