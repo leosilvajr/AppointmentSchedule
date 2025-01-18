@@ -22,7 +22,15 @@
       },
       "package": "com.leosilvatanabi.agendeimobile",
       "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"],
-      "usesCleartextTraffic": true
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": {
+            "scheme": "http"
+          },
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
