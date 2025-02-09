@@ -30,6 +30,7 @@ function Schedule(props) {
             });
 
             if (response.data?.id_appointment) {
+                Alert.alert("Sucesso", "Agendamento efetuado com sucesso!");
                 props.navigation.popToTop(); // Voltar para a raiz
             }
         } catch (error) {
